@@ -44,7 +44,7 @@ export default function NavLinks({
                       item.mono ? "font-mono text-[13px]" : "",
                       active
                         ? "bg-accent-tint font-semibold text-accent"
-                        : "text-ink hover:text-accent-hover",
+                        : "text-text hover:text-accent-hover",
                     ].join(" ")}
                   >
                     {item.label}

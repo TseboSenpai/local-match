@@ -11,12 +11,13 @@ export const site = {
 };
 
 // Titles come from the heading of each notebook in notebooks/.
+// Summaries come from the repository README.
 export const notebooks = [
-  { id: "01", title: "Data collection and cleaning" },
-  { id: "02", title: "Local vocabulary layer" },
-  { id: "03", title: "Synthetic candidates and ground truth" },
-  { id: "04", title: "Matching: generic vs local-aware" },
-  { id: "05", title: "Evaluation" },
+  { id: "01", title: "Data collection and cleaning", summary: "Loads ESCO and the Limpopo job adverts, cleans the text and tags each advert with its district." },
+  { id: "02", title: "Local vocabulary layer", summary: "Finds the South African credentials and terms that Limpopo adverts use." },
+  { id: "03", title: "Synthetic candidates and ground truth", summary: "Groups jobs into families, reads their requirements, and generates job seekers whose correct matches are known." },
+  { id: "04", title: "Matching: generic vs local-aware", summary: "Extracts skills, builds embeddings and scores every job seeker against every job in both modes." },
+  { id: "05", title: "Evaluation", summary: "Measures quality, significance, sensitivity and fairness, and builds the training pathways." },
 ];
 
 export type NavItem = { href: string; label: string; mono?: boolean };

@@ -9,7 +9,7 @@ function Bar({ value, axisMax, kind }: { value: number; axisMax: number; kind: "
   return (
     <div className="flex items-center gap-2">
       <div
-        className={`h-3.5 rounded-r-[3px] lg:h-[18px] ${kind === "local" ? "bg-accent" : "bg-generic"}`}
+        className={`h-3.5 rounded-r-[3px] lg:h-[18px] ${kind === "local" ? "bg-accent" : "bg-generic-bar"}`}
         style={{ width }}
       />
       <span className={`font-mono text-xs lg:text-[13px] ${kind === "local" ? "font-semibold text-accent" : "text-muted"}`}>
@@ -21,10 +21,10 @@ function Bar({ value, axisMax, kind }: { value: number; axisMax: number; kind: "
 
 export default function BarChart({ groups, axisMax }: { groups: BarGroup[]; axisMax: number }) {
   return (
-    <figure className="rounded-xl border border-line bg-surface p-4 lg:p-6">
-      <figcaption className="mb-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-ink-2 lg:mb-5 lg:text-[13px]">
+    <figure className="rounded-xl border border-border bg-surface p-4 lg:p-6">
+      <figcaption className="mb-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-text-2 lg:mb-5 lg:text-[13px]">
         <span className="inline-flex items-center gap-2">
-          <span className="h-3 w-3 rounded-sm bg-generic" />
+          <span className="h-3 w-3 rounded-sm bg-generic-bar" />
           Generic
         </span>
         <span className="inline-flex items-center gap-2">

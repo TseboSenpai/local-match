@@ -1,6 +1,8 @@
 import Link from "next/link";
 import BarChart from "@/components/BarChart";
+import Hero from "@/components/hero/Hero";
 import ModeToggle from "@/components/ModeToggle";
+import PageFrame from "@/components/PageFrame";
 
 // Headline numbers. Sources in the research repo:
 //   results/05_main_results.csv      NDCG@10, P@10, R@10 (test set, 480 job seekers)
@@ -38,33 +40,18 @@ const section = "mb-12 lg:mb-16";
 
 export default function OverviewPage() {
   return (
+    <>
+    <Hero />
+    <PageFrame>
     <div className="max-w-[860px]">
-      <p className="mb-2.5 text-[13px] text-muted lg:mb-3">Docs / Overview</p>
-      <h1 className="mb-3 text-[34px] font-extrabold leading-[1.1] tracking-[-0.025em] lg:mb-3.5 lg:text-5xl lg:leading-[1.08]">
-        Local-Aware AI Job Matching
-      </h1>
-      <p className="mb-3.5 text-[17px] leading-normal text-ink-2 lg:mb-5 lg:text-xl">
-        An AI job-matching system that uses local knowledge — South African credentials, equivalence rules and
-        location — to recommend fairer, more relevant jobs and training to job seekers in Limpopo.
-      </p>
-      <p className="mb-5 text-[13px] leading-normal text-muted lg:mb-10 lg:text-sm">
-        Tsebo Molatelo Molope · Honours in Computer Science (HRCOS82) · University of South Africa · 2026
-      </p>
-      <Link
-        href="/run/"
-        className="mb-8 flex min-h-12 items-center justify-center rounded-lg bg-accent font-semibold text-on-accent lg:hidden"
-      >
-        Open in Colab
-      </Link>
-
       <div className={`grid grid-cols-2 gap-2.5 lg:grid-cols-4 lg:gap-3 ${section}`}>
         {stats.map((s) => (
           <div
             key={s.value}
-            className={`rounded-[10px] p-4 lg:p-5 ${s.highlight ? "bg-accent text-on-accent" : "border border-line bg-surface"}`}
+            className={`rounded-[10px] p-4 lg:p-5 ${s.highlight ? "bg-accent text-on-accent" : "border border-border bg-surface"}`}
           >
             <p className="text-3xl font-extrabold leading-[1.1] tracking-[-0.02em] lg:text-4xl">{s.value}</p>
-            <p className={`mt-1.5 text-[13px] leading-[1.45] lg:mt-2 lg:text-sm ${s.highlight ? "font-medium" : "text-ink-2"}`}>
+            <p className={`mt-1.5 text-[13px] leading-[1.45] lg:mt-2 lg:text-sm ${s.highlight ? "font-medium" : "text-text-2"}`}>
               {s.text}
             </p>
             {s.detail && <p className="mt-1.5 font-mono text-[11px] lg:text-xs">{s.detail}</p>}
@@ -74,34 +61,34 @@ export default function OverviewPage() {
 
       <section className={section}>
         <h2 className={`mb-3 ${h2}`}>The problem</h2>
-        <p className="mb-4 text-ink-2">
+        <p className="mb-4 text-text-2">
           Most job platforms match people to jobs using international skills lists and how similar the words in a CV
           are to the words in an advert. That misses how hiring works in Limpopo. Adverts ask for Grade 12, NC(V)
           levels, N-levels, driver’s licence codes and professional registrations, and they expect candidates who can
           reach the workplace.
         </p>
-        <p className="text-ink-2">
+        <p className="text-text-2">
           A system that can’t read these signals can rank a qualified local job seeker below someone who simply used
           the same words as the advert. This project tests what changes when the matcher understands them. It was
-          tested on <strong className="text-ink">427 real Limpopo job adverts</strong> (DPSA vacancy circulars and
-          PNet) and <strong className="text-ink">600 synthetic job seekers</strong>.
+          tested on <strong className="text-text">427 real Limpopo job adverts</strong> (DPSA vacancy circulars and
+          PNet) and <strong className="text-text">600 synthetic job seekers</strong>.
         </p>
       </section>
 
       <section className={section}>
         <h2 className={`mb-2 ${h2}`}>What local knowledge changes</h2>
-        <p className="mb-5 text-ink-2">One advert, one job seeker. Switch modes to see what each one recognises.</p>
+        <p className="mb-5 text-text-2">One advert, one job seeker. Switch modes to see what each one recognises.</p>
         <ModeToggle />
       </section>
 
       <section className={section}>
         <h2 className={`mb-2 ${h2}`}>Two modes, one algorithm</h2>
-        <p className="mb-5 text-ink-2">
+        <p className="mb-5 text-text-2">
           Both modes run the same matching algorithm. The local-aware mode adds a layer of South African knowledge on
           top, so any difference in results comes from that layer alone.
         </p>
         {/* overflow-x-auto: on narrow screens the table scrolls sideways inside its box */}
-        <div className="overflow-x-auto rounded-xl border border-line">
+        <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[520px] border-collapse text-sm">
             <thead>
               <tr className="bg-surface text-left">
@@ -112,7 +99,7 @@ export default function OverviewPage() {
             </thead>
             <tbody>
               {ingredients.map((row) => (
-                <tr key={row.name} className="border-t border-line-subtle">
+                <tr key={row.name} className="border-t border-border-subtle">
                   <td className="px-5 py-3">{row.name}</td>
                   <td className={`px-5 py-3 ${row.generic ? "" : "text-muted"}`}>{row.generic ? "Yes" : "No"}</td>
                   <td className={`px-5 py-3 ${row.generic ? "" : "font-bold text-accent"}`}>Yes</td>
@@ -125,21 +112,21 @@ export default function OverviewPage() {
 
       <section className={section}>
         <h2 className={`mb-2 ${h2}`}>Generic vs local-aware</h2>
-        <p className="mb-5 text-ink-2">
+        <p className="mb-5 text-text-2">
           Average scores across the 480 synthetic job seekers in the test set. Higher is better on all three.
         </p>
         <BarChart groups={mainResults} axisMax={0.5} />
-        <div className="mt-3 rounded-[10px] border border-line px-4 py-3.5 text-[13px] leading-[1.55] text-ink-2 lg:mt-4 lg:px-5 lg:py-4 lg:text-sm">
+        <div className="mt-3 rounded-[10px] border border-border px-4 py-3.5 text-[13px] leading-[1.55] text-text-2 lg:mt-4 lg:px-5 lg:py-4 lg:text-sm">
           <p className="mb-1.5">
-            <strong className="text-ink">NDCG@10</strong> — how well the best-fitting jobs are placed near the top of
+            <strong className="text-text">NDCG@10</strong> — how well the best-fitting jobs are placed near the top of
             the 10 recommendations.
           </p>
           <p className="mb-1.5">
-            <strong className="text-ink">Precision@10</strong> — the share of the 10 recommended jobs that are
+            <strong className="text-text">Precision@10</strong> — the share of the 10 recommended jobs that are
             suitable.
           </p>
           <p>
-            <strong className="text-ink">Recall@10</strong> — the share of all suitable jobs that make it into the top
+            <strong className="text-text">Recall@10</strong> — the share of all suitable jobs that make it into the top
             10.
           </p>
         </div>
@@ -149,7 +136,7 @@ export default function OverviewPage() {
         <h2 className={`mb-4 ${h2}`}>Where to next</h2>
         <div className="grid gap-2.5 md:grid-cols-3 lg:gap-3">
           {nextLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="block rounded-[10px] border border-line bg-surface p-4 hover:border-line-strong lg:p-5">
+            <Link key={l.href} href={l.href} className="block rounded-[10px] border border-border bg-surface p-4 hover:border-border-strong lg:p-5">
               <span className="mb-1 block font-bold text-accent">{l.title}</span>
               <span className="text-sm text-muted">{l.text}</span>
             </Link>
@@ -157,5 +144,7 @@ export default function OverviewPage() {
         </div>
       </section>
     </div>
+    </PageFrame>
+    </>
   );
 }

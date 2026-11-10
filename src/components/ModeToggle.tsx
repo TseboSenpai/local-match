@@ -50,12 +50,12 @@ export default function ModeToggle() {
   const button = (pressed: boolean, activeColours: string) =>
     [
       "min-h-11 cursor-pointer rounded-md px-4 text-sm",
-      pressed ? `${activeColours} font-semibold text-on-accent` : "font-medium text-muted hover:text-ink",
+      pressed ? `${activeColours} font-semibold text-on-accent` : "font-medium text-muted hover:text-text",
     ].join(" ");
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-surface">
-      <div className="grid border-b border-line md:grid-cols-2">
+    <div className="overflow-hidden rounded-xl border border-border bg-surface">
+      <div className="grid border-b border-border md:grid-cols-2">
         <div className="p-4 lg:p-5">
           <p className={label}>Job advert</p>
           <p className={sample}>
@@ -63,7 +63,7 @@ export default function ModeToggle() {
             advantage.
           </p>
         </div>
-        <div className="border-t border-line p-4 md:border-l md:border-t-0 lg:p-5">
+        <div className="border-t border-border p-4 md:border-l md:border-t-0 lg:p-5">
           <p className={label}>Job seeker</p>
           <p className={sample}>
             NC(V) Level 4 in Office Administration, Code 10 licence, lives in Lebowakgomo, can work in Capricorn or
@@ -72,14 +72,14 @@ export default function ModeToggle() {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-3 lg:px-5 lg:py-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3 lg:px-5 lg:py-4">
         <p className="hidden text-sm font-semibold sm:block">Matching mode</p>
         <div
           role="group"
           aria-label="Matching mode"
-          className="grid w-full grid-cols-2 gap-0.5 rounded-lg border border-line bg-bg p-[3px] sm:w-auto"
+          className="grid w-full grid-cols-2 gap-0.5 rounded-lg border border-border bg-bg p-[3px] sm:w-auto"
         >
-          <button type="button" aria-pressed={!local} onClick={() => setMode("generic")} className={button(!local, "bg-ink")}>
+          <button type="button" aria-pressed={!local} onClick={() => setMode("generic")} className={button(!local, "bg-text")}>
             Generic
           </button>
           <button type="button" aria-pressed={local} onClick={() => setMode("local")} className={button(local, "bg-accent")}>
@@ -91,7 +91,7 @@ export default function ModeToggle() {
       {/* aria-live lets screen readers announce the rows when the mode changes */}
       <div aria-live="polite">
         {rows.map((row) => (
-          <div key={row.ask} className="flex flex-wrap gap-x-5 gap-y-2 border-b border-line-subtle px-4 py-3.5 last:border-b-0 lg:px-5 lg:py-4">
+          <div key={row.ask} className="flex flex-wrap gap-x-5 gap-y-2 border-b border-border-subtle px-4 py-3.5 last:border-b-0 lg:px-5 lg:py-4">
             <div className="min-w-0 flex-[1_1_220px]">
               <p className="text-sm font-semibold">{row.ask}</p>
               <p className="mt-0.5 text-[13px] text-muted">Seeker: {row.has}</p>
@@ -112,7 +112,7 @@ export default function ModeToggle() {
                   Missed
                 </span>
               )}
-              <p className="text-sm leading-normal text-ink-2">{local ? row.localNote : row.genericNote}</p>
+              <p className="text-sm leading-normal text-text-2">{local ? row.localNote : row.genericNote}</p>
             </div>
           </div>
         ))}
