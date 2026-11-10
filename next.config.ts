@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Build plain HTML/CSS/JS into the `out/` folder so GitHub Pages can host it.
+  output: "export",
+  // Write /pipeline/index.html instead of /pipeline.html (works on any static host).
+  trailingSlash: true,
   reactCompiler: true,
   turbopack: {
     rules: {
