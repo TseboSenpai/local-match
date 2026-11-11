@@ -10,10 +10,14 @@ export type NotebookPage = {
   steps: { title: string; text: string }[];
   // The first stat is shown as the lime tile.
   stats: { value: string; text: string }[];
-  chart: {
-    title: string;
-    caption: string;
-    bars: { label: string; value: number }[];
-  };
+  // Either one row of lime bars (bars), or generic-vs-local pairs (groups).
+  chart:
+    | { title: string; caption: string; bars: { label: string; value: number }[] }
+    | {
+        title: string;
+        caption: string;
+        groups: { label: string; generic: number; local: number }[];
+        axisMax: number; // the value a full-width bar stands for
+      };
   goodToKnow: string;
 };

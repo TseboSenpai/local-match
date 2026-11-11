@@ -4,7 +4,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BarChart from "@/components/BarChart";
 import CountChart from "@/components/CountChart";
+import NotebookEmbed from "@/components/NotebookEmbed";
 import PageFrame from "@/components/PageFrame";
 import { getNotebookPage, notebookPages } from "@/content/notebooks";
 import { notebooks, site } from "@/content/site";
@@ -38,7 +40,6 @@ export default async function NotebookPage({ params }: PageProps<"/notebooks/[id
   const next = index < notebooks.length - 1 ? notebooks[index + 1] : null;
 
   const colabUrl = `https://colab.research.google.com/github/${site.repo}/blob/main/${page.file}`;
-  const binderUrl = `https://mybinder.org/v2/gh/${site.repo}/HEAD?labpath=${encodeURIComponent(page.file)}`;
   const githubUrl = `${site.githubUrl}/blob/main/${page.file}`;
 
   return (
@@ -63,7 +64,6 @@ export default async function NotebookPage({ params }: PageProps<"/notebooks/[id
             </svg>
             Open in Colab
           </a>
-          <a href={binderUrl} className={outlineButton}>Launch Binder</a>
           <a href={githubUrl} className={outlineButton}>View on GitHub</a>
         </div>
 
@@ -108,7 +108,7 @@ export default async function NotebookPage({ params }: PageProps<"/notebooks/[id
             </div>
           ))}
         </div>
-        <CountChart {...page.chart} />
+        {"groups" in page.chart ? <BarChart {...page.chart} /> : <CountChart {...page.chart} />}
 
         <aside className="mb-12 mt-8 flex gap-3.5 rounded-[10px] border border-border-strong px-[18px] py-4">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#D4FF3A" strokeWidth="1.8" className="mt-0.5 flex-none">
@@ -120,6 +120,8 @@ export default async function NotebookPage({ params }: PageProps<"/notebooks/[id
             <p className="text-[15px] text-text-2">{page.goodToKnow}</p>
           </div>
         </aside>
+
+        <NotebookEmbed id={info.id} title={info.title} />
 
         <nav aria-label="Notebook pages" className="grid gap-3 sm:grid-cols-2">
           <Link href={previous ? `/notebooks/${previous.id}/` : "/pipeline/"} className={navCard}>

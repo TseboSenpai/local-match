@@ -19,9 +19,25 @@ function Bar({ value, axisMax, kind }: { value: number; axisMax: number; kind: "
   );
 }
 
-export default function BarChart({ groups, axisMax }: { groups: BarGroup[]; axisMax: number }) {
+export default function BarChart({
+  groups,
+  axisMax,
+  title,
+  caption,
+}: {
+  groups: BarGroup[];
+  axisMax: number;
+  title?: string; // optional heading inside the chart box
+  caption?: string;
+}) {
   return (
     <figure className="rounded-xl border border-border bg-surface p-4 lg:p-6">
+      {title && (
+        <div className="mb-4">
+          <p className="font-semibold">{title}</p>
+          {caption && <p className="mt-0.5 text-[13px] text-muted">{caption}</p>}
+        </div>
+      )}
       <figcaption className="mb-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-text-2 lg:mb-5 lg:text-[13px]">
         <span className="inline-flex items-center gap-2">
           <span className="h-3 w-3 rounded-sm bg-generic-bar" />

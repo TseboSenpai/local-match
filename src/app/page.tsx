@@ -32,7 +32,7 @@ const ingredients = [
 const nextLinks = [
   { href: "/pipeline/", title: "See the pipeline →", text: "How data flows through the five notebooks." },
   { href: "/notebooks/01/", title: "Start with notebook 01 →", text: "Walk through the work step by step." },
-  { href: "/run/", title: "How to run it →", text: "Colab, Binder or your own computer." },
+  { href: "/run/", title: "How to run it →", text: "Colab or your own computer." },
 ];
 
 const h2 = "text-[22px] font-bold tracking-[-0.015em] lg:text-[26px]";

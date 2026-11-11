@@ -5,7 +5,7 @@ export const site = {
   name: "Local-Aware AI Job Matching",
   shortName: "Local-Aware Job Matching",
   author: "Tsebo Molope",
-  // GitHub "owner/name". The Colab, Binder and GitHub links are built from this.
+  // GitHub "owner/name". The Colab and GitHub links are built from this.
   repo: "TseboSenpai/ai-job-matching-skills-za",
   githubUrl: "https://github.com/TseboSenpai/ai-job-matching-skills-za",
   footerNote:
@@ -31,6 +31,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { href: "/", label: "Overview" },
       { href: "/pipeline/", label: "Pipeline" },
+      { href: "/about/", label: "About" },
     ],
   },
   {
@@ -46,7 +47,6 @@ export const navGroups: NavGroup[] = [
     items: [
       { href: "/results/", label: "Results" },
       { href: "/run/", label: "Run it" },
-      { href: "/about/", label: "About" },
     ],
   },
 ];

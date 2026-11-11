@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "notebooks": "python3 scripts/build_notebooks.py",
     "start": "next start"
   },
   "dependencies": {
