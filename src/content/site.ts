@@ -5,6 +5,8 @@ export const site = {
   name: "Local-Aware AI Job Matching",
   shortName: "Local-Aware Job Matching",
   author: "Tsebo Molope",
+  // GitHub "owner/name". The Colab, Binder and GitHub links are built from this.
+  repo: "TseboSenpai/ai-job-matching-skills-za",
   githubUrl: "https://github.com/TseboSenpai/ai-job-matching-skills-za",
   footerNote:
     "The 600 job seekers are synthetic. Results describe how the system behaves, not real hiring outcomes.",

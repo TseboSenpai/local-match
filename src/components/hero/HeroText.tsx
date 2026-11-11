@@ -3,6 +3,7 @@
 // (the "hero-rise" animation is in globals.css).
 
 import Link from "next/link";
+import { site } from "@/content/site";
 
 const rise = (step: number) => ({ className: "hero-rise", style: { animationDelay: `${step * 100}ms` } });
 
@@ -21,7 +22,7 @@ export default function HeroText() {
         location — to recommend fairer, more relevant jobs and training to job seekers in Limpopo.
       </p>
       <p {...rise(2)} className="hero-rise mt-4 text-[13px] leading-normal text-muted lg:text-sm">
-        Tsebo Molatelo Molope · Honours in Computer Science (HRCOS82) · University of South Africa · 2026
+        {site.author} · 2026
       </p>
       <div {...rise(3)} className="hero-rise mt-6 flex flex-col gap-3 sm:flex-row lg:mt-7">
         <Link
